@@ -13,7 +13,7 @@ public class RoverTest {
 
   @Before
   public void setup() {
-    mars = new Planet(100, 100);
+    mars = new Planet(10, 10);
     marsRover = new Rover(0, 0, 'N', mars);
   }
 
@@ -71,6 +71,18 @@ public class RoverTest {
     marsRover.rove("ffrff");
     assertEquals("Rover rove", 2, marsRover.getX());
     assertEquals("Rover rove", 2, marsRover.getY());
+  }
+
+  @Test
+  public void testWrapping() {
+    marsRover.rove("fffffffff");
+    assertEquals("Rover y wrap", 9, marsRover.getY());
+    marsRover.rove("f");
+    assertEquals("Rover y wrap", 0, marsRover.getY());  
+    marsRover.rove("rfffffffff");
+    assertEquals("Rover x wrap", 9, marsRover.getX());
+    marsRover.rove("f");
+    assertEquals("Rover x wrap", 0, marsRover.getX());
   }
  
 

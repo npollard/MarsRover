@@ -79,6 +79,10 @@ public class Rover {
 
     }
 
+    // Wrap around the planet's boundaries
+    y = y % planet.getHeight();
+    x = x % planet.getWidth();
+
   }
 
 
