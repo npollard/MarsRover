@@ -71,6 +71,7 @@ public class RoverTest {
     marsRover.rove("ffrff");
     assertEquals("Rover rove", 2, marsRover.getX());
     assertEquals("Rover rove", 2, marsRover.getY());
+  
   }
 
   @Test
@@ -83,6 +84,15 @@ public class RoverTest {
     assertEquals("Rover x wrap", 9, marsRover.getX());
     marsRover.rove("f");
     assertEquals("Rover x wrap", 0, marsRover.getX());
+  
+  }
+
+  @Test
+  public void testObstacles() {
+    mars.addObstacle(2, 2);
+    marsRover.rove("ffrffff");
+    assertEquals("Rover obstacle", 1, marsRover.getX());
+    assertEquals("Rover obstacle", 2, marsRover.getY());
   }
  
 

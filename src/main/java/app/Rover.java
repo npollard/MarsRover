@@ -44,7 +44,7 @@ public class Rover {
       }
 
       if (command == 'f' || command == 'b') {
-        move(command);
+        if (!move(command)) break;
       }
     }
 
@@ -65,7 +65,10 @@ public class Rover {
 
   }
 
-  private void move(char command) {
+  private boolean move(char command) {
+    int prevx = x;
+    int prevy = y;
+
     int movement = (command == 'f') ? 1 : -1;
     switch (orientation) {
       case 'N': y += movement;
@@ -82,6 +85,17 @@ public class Rover {
     // Wrap around the planet's boundaries
     y = y % planet.getHeight();
     x = x % planet.getWidth();
+
+    if (planet.hasObstacleAt(x, y)) {
+      System.out.printf("\nOBSTACLE DETECTED AT (%d, %d).\n", x, y);
+      System.out.printf("ROVER IS AT (%d, %d) FACING %c.\n\n", prevx, prevy, orientation);
+      x = prevx;
+      y = prevy;
+      return false;
+    
+    }
+
+    return true;
 
   }
 
