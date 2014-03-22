@@ -37,13 +37,15 @@ public class Rover {
   }
 
   public void rove(String commands) {
-    char command = commands.charAt(0);
-    if (command == 'r' || command == 'l') {
-      rotate(command);
-    }
+    for (int i = 0; i < commands.length(); i++) {
+      char command = commands.charAt(i);
+      if (command == 'r' || command == 'l') {
+        rotate(command);
+      }
 
-    if (command == 'f' || command == 'b') {
-      move(command);
+      if (command == 'f' || command == 'b') {
+        move(command);
+      }
     }
 
   }

@@ -65,6 +65,13 @@ public class RoverTest {
     assertEquals("Rover basic movement", 0, marsRover.getY());
 
   }
+
+  @Test
+  public void testRoving() {
+    marsRover.rove("ffrff");
+    assertEquals("Rover rove", 2, marsRover.getX());
+    assertEquals("Rover rove", 2, marsRover.getY());
+  }
  
 
 }
