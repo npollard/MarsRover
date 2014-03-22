@@ -10,7 +10,7 @@ import org.junit.Test;
 public class RoverTest {
   Rover marsRover;
   Planet planet;
-  MissionController marsMission;
+  MissionControl marsMission;
 
  
 	@Test
