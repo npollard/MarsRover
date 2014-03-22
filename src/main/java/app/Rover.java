@@ -36,11 +36,16 @@ public class Rover {
     return orientation;
   }
 
-  public void move(String commands) {
+  public void rove(String commands) {
     char command = commands.charAt(0);
     if (command == 'r' || command == 'l') {
       rotate(command);
     }
+
+    if (command == 'f' || command == 'b') {
+      move(command);
+    }
+
   }
 
   private void rotate(char command) {
@@ -54,6 +59,22 @@ public class Rover {
       case 'W': orientation = (command == 'r') ? 'N' : 'S';
                 break;
     
+    }
+
+  }
+
+  private void move(char command) {
+    int movement = (command == 'f') ? 1 : -1;
+    switch (orientation) {
+      case 'N': y += movement;
+                break;
+      case 'E': x += movement;
+                break;
+      case 'S': y -= movement;
+                break;
+      case 'W': x -= movement;
+                break;
+
     }
 
   }
