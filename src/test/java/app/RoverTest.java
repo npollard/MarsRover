@@ -12,6 +12,13 @@ public class RoverTest {
   Planet planet;
   MissionControl marsMission;
 
+  @Before
+  public void setup() {
+    marsRover = new Rover();
+    planet = new Planet();
+    marsMission = new MissionControl(planet, marsRover);
+  }
+
  
 	@Test
 	public void testBasic() {
