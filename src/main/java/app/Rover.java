@@ -21,4 +21,19 @@ public class Rover {
 
   }
 
+  public int getX() {
+    return x;
+
+  }
+
+  public int getY() {
+    return y;
+  
+  }
+
+  public char getOrientation() {
+    return orientation;
+ 
+  }
+
 }
