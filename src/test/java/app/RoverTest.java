@@ -8,6 +8,10 @@ import org.junit.Test;
 
 
 public class RoverTest {
+  Rover marsRover;
+  Planet planet;
+  MissionController marsMission;
+
  
 	@Test
 	public void testBasic() {
