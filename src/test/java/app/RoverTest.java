@@ -8,6 +8,13 @@ import org.junit.Test;
 
 
 public class RoverTest {
+
+  @Before
+  public void setUp() {
+    Planet mars = new Planet(100, 100);
+    Rover marsRover = new Rover(0, 0, 'W', mars);
+  }
+
  
 	@Test
 	public void testBasic() {
