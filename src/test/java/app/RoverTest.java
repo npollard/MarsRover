@@ -14,8 +14,8 @@ public class RoverTest {
 
   @Before
   public void setup() {
-    marsRover = new Rover();
-    planet = new Planet();
+    marsRover = new Rover(0, 0, 'N');
+    planet = new Planet(10, 10);
     marsMission = new MissionControl(planet, marsRover);
   }
 
