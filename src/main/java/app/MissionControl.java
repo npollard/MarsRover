@@ -43,7 +43,11 @@ public class MissionControl {
       }
 
       if (command == 'l' || command == 'r') rover.rotate(command);
-      if (command == 'f' || command == 'b') rover.move(command, planet.getWidth(), planet.getHeight());
+      if (command == 'f' || command == 'b') {
+        if (!rover.move(command, planet.getWidth(), planet.getHeight(), planet.getObstacles())) {
+          break;
+        }
+      }
 
     }
 

@@ -1,5 +1,7 @@
 package app;
 
+import java.util.ArrayList;
+
 import static org.junit.Assert.*;
 
 import org.junit.Before;
@@ -14,8 +16,11 @@ public class RoverTest {
 
   @Before
   public void setup() {
+    int[] obstacle = {1, 3};
+    ArrayList<int[]> obstacles = new ArrayList<int[]>();
+    obstacles.add(obstacle);
+    planet = new Planet(10, 10, obstacles);
     marsRover = new Rover(0, 0, 'N');
-    planet = new Planet(10, 10);
     marsMission = new MissionControl(planet, marsRover);
   }
 
@@ -73,6 +78,15 @@ public class RoverTest {
     assertEquals("Rover wrapping", 9, marsMission.getRoverX());
     marsMission.rove("f");
     assertEquals("Rover wrapping", 0, marsMission.getRoverX());
+
+  }
+
+  @Test
+  public void testObstacles() {
+    marsMission.rove("fffrffff");
+    assertEquals("Rover obstacle detection.", 0, marsMission.getRoverX());
+    assertEquals("Rover obstacle detection.", 3, marsMission.getRoverY());
+    assertEquals("Rover obstacle detection.", 'E', marsMission.getRoverOrientation());
 
   }
  

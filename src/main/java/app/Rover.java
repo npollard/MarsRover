@@ -1,5 +1,7 @@
 package app;
 
+import java.util.ArrayList;
+
 public class Rover {
   int x, y;
   char orientation;
@@ -50,7 +52,10 @@ public class Rover {
 
   }
 
-  public void move(char command, int width, int height) {
+  public boolean move(char command, int width, int height, ArrayList<int[]> obstacles) {
+    int oldX = x;
+    int oldY = y;
+
     int movement = (command == 'f') ? 1 : -1;
 
     switch (orientation) {
@@ -66,6 +71,27 @@ public class Rover {
 
     x = x % width;
     y = y % height;
+
+    if (obstructedCoordinate(obstacles)) {
+      System.out.printf("OBSTACLE DETECTED AT (%d, %d).\n", x, y);
+      x = oldX;
+      y = oldY;
+      System.out.printf("ROVER IS AT (%d, %d).\n", x, y);
+      return false;
+
+    }
+
+    return true;
+
+  }
+
+  private boolean obstructedCoordinate(ArrayList<int[]> obstacles) {
+    for (int i = 0; i < obstacles.size(); i++) {
+      if (obstacles.get(i)[0] == x && obstacles.get(i)[1] == y) return true;
+    
+    }
+
+    return false;
 
   }
 
