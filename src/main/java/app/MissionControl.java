@@ -15,5 +15,33 @@ public class MissionControl {
   
   }
 
+  public char getRoverOrientation() {
+    return rover.getOrientation();
+  
+  }
+
+  public int getRoverX() {
+    return rover.getX();
+
+  }
+
+  public int getRoverY() {
+    return rover.getY();
+  
+  }
+
+
+  public void rove(String commands) {
+    char command;
+    
+    for (int i = 0; i < commands.length(); i++) {
+      command = commands.charAt(i);
+      if (command == 'l' || command == 'r') rover.rotate(command);
+      if (command == 'f' || command == 'b') rover.move(command);
+
+    }
+
+  }
+
 
 }

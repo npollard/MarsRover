@@ -21,9 +21,47 @@ public class RoverTest {
 
  
 	@Test
-	public void testBasic() {
-    assertTrue(true);
-  }   
+	public void testRotation() {
+    assertEquals("Rover rotation", 'N', marsMission.getRoverOrientation());
+    marsMission.rove("l");
+    assertEquals("Rover rotation", 'W', marsMission.getRoverOrientation());
+    marsMission.rove("l");
+    assertEquals("Rover rotation", 'S', marsMission.getRoverOrientation());
+    marsMission.rove("l");
+    assertEquals("Rover rotation", 'E', marsMission.getRoverOrientation());
+    marsMission.rove("l");
+    assertEquals("Rover rotation", 'N', marsMission.getRoverOrientation());
+    marsMission.rove("r");
+    assertEquals("Rover rotation", 'E', marsMission.getRoverOrientation());
+    marsMission.rove("r");
+    assertEquals("Rover rotation", 'S', marsMission.getRoverOrientation());
+    marsMission.rove("r");
+    assertEquals("Rover rotation", 'W', marsMission.getRoverOrientation());
+    marsMission.rove("r");
+    assertEquals("Rover rotation", 'N', marsMission.getRoverOrientation());
+
+  }
+
+  @Test
+  public void testMovement() {
+    assertEquals("Rover movement", 0, marsMission.getRoverX());
+    assertEquals("Rover movement", 0, marsMission.getRoverY());
+    marsMission.rove("f");
+    assertEquals("Rover movement", 0, marsMission.getRoverX());
+    assertEquals("Rover movement", 1, marsMission.getRoverY());
+    marsMission.rove("b");
+    assertEquals("Rover movement", 0, marsMission.getRoverX());
+    assertEquals("Rover movement", 0, marsMission.getRoverY());
+  
+  }
+
+  @Test
+  public void testRoving() {
+    marsMission.rove("ffrff");
+    assertEquals("Rover roving", 2, marsMission.getRoverX());
+    assertEquals("Rover roving", 2, marsMission.getRoverY());
+
+  }
  
 
 }

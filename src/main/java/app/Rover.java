@@ -36,4 +36,34 @@ public class Rover {
  
   }
 
+  public void rotate(char command) {
+    switch (orientation) {
+      case 'N': orientation = (command == 'l') ? 'W' : 'E';
+                break;
+      case 'S': orientation = (command == 'l') ? 'E' : 'W';
+                break;
+      case 'E': orientation = (command == 'l') ? 'N' : 'S';
+                break;
+      case 'W': orientation = (command == 'l') ? 'S' : 'N';
+                break;
+    }
+
+  }
+
+  public void move(char command) {
+    int movement = (command == 'f') ? 1 : -1;
+
+    switch (orientation) {
+      case 'N': y += movement;
+                break;
+      case 'S': y -= movement;
+                break;
+      case 'E': x += movement;
+                break;
+      case 'W': x -= movement;
+                break;
+    }
+
+  }
+
 }
