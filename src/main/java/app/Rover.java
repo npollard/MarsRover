@@ -50,7 +50,7 @@ public class Rover {
 
   }
 
-  public void move(char command) {
+  public void move(char command, int width, int height) {
     int movement = (command == 'f') ? 1 : -1;
 
     switch (orientation) {
@@ -63,6 +63,9 @@ public class Rover {
       case 'W': x -= movement;
                 break;
     }
+
+    x = x % width;
+    y = y % height;
 
   }
 

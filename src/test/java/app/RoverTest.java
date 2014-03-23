@@ -62,6 +62,19 @@ public class RoverTest {
     assertEquals("Rover roving", 2, marsMission.getRoverY());
 
   }
+
+  @Test
+  public void testWrapping() {
+    marsMission.rove("fffffffff");
+    assertEquals("Rover wrapping", 9, marsMission.getRoverY());
+    marsMission.rove("f");
+    assertEquals("Rover wrapping", 0, marsMission.getRoverY());
+    marsMission.rove("rfffffffff");
+    assertEquals("Rover wrapping", 9, marsMission.getRoverX());
+    marsMission.rove("f");
+    assertEquals("Rover wrapping", 0, marsMission.getRoverX());
+
+  }
  
 
 }
