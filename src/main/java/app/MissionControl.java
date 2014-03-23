@@ -36,6 +36,12 @@ public class MissionControl {
     
     for (int i = 0; i < commands.length(); i++) {
       command = commands.charAt(i);
+      
+      if (command != 'l' && command != 'r' && command != 'f' && command != 'b') {
+        System.err.printf("ERROR: invalid roving command.\n");
+        System.exit(1);
+      }
+
       if (command == 'l' || command == 'r') rover.rotate(command);
       if (command == 'f' || command == 'b') rover.move(command);
 
